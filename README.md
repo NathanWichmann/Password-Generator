@@ -4,4 +4,4 @@ Javascript. The task was to design a simple password generator using prompt, con
 communicate with an html document. Javascript, combined with html and css, make a fully dynamic website and allow users to interact with the webites features. 
 
 # Link to the Deployed website <a href="https://nathanwichmann.github.io/Password-Generator/">Deployed Website</a> 
-
+<img scr="https://user-images.githubusercontent.com/77902368/110245972-a4361700-7f33-11eb-87cf-def87330a2d5.png" alt="Screentshot"> 
