@@ -7,12 +7,13 @@ var symbolsArr = ["!", "@", "#", "$", "%", "^", "&", "*", "()", "_", "-", "=", "
 var numbersArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var lowerCasesArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCasesArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
+// this is the function for the random generator 
 function getRandom(arr) {
   var randomIndex = Math.floor(Math.random() * arr.length);
   var randomElement = arr[randomIndex];
   return randomElement;
 }
+
 
 
 
@@ -52,31 +53,31 @@ function generatePassword() {
   // confirming with the user if they want to use symbols in their password 
   var symbols = confirm("Would you like to use Symbols in you Password?");
 
-
+  // checking my work 
   console.log(passwordLength, upperCases, lowerCases, numbers, symbols)
-
+  // checking my work 
   console.log("possiblechar", possibleChar)
-
+  // if the user chooses to have uppercase its added to the possible character array 
   if (upperCasesArr) {
     //grab possible chartacter Types
     possibleChar = possibleChar.concat(upperCasesArr)
     guaranteedCharacters.push(getRandom(upperCasesArr));
     console.log("guaranteedCharacters", guaranteedCharacters);
   }
-
+   // if the user chooses to have lowercase its added to the possible character array 
   if (lowerCasesArr) {
     //grab possible chartacter Types
     possibleChar = possibleChar.concat(lowerCasesArr)
     guaranteedCharacters.push(getRandom(lowerCasesArr));
     console.log("guaranteedCharacters", guaranteedCharacters);
   }
-
+   // if the user chooses to have numbers its added to the possible character array 
   if (numbersArr) {
     possibleChar = possibleChar.concat(numbersArr)
     guaranteedCharacters.push(getRandom(numbersArr));
     console.log("guaranteedCharacters", guaranteedCharacters);
   }
-
+   // if the user chooses to have symbols its added to the possible character array 
   if (symbolsArr) {
     possibleChar = possibleChar.concat(symbolsArr)
     guaranteedCharacters.push(getRandom(symbolsArr));
@@ -86,21 +87,23 @@ function generatePassword() {
   // iterates over the password length, 
   // selects random characters from the array of possible characters
   for (let i = 0; i < passwordLength; i++) {
-    var possibleChar = getRandom(possibleChar)
-    result.push(possibleChar);
+    var newCahr = getRandom(possibleChar)
+    result.push(newCahr);
   }
 
   // mixes in at least one charcter of each chosen array
   for (let i = 0; i < guaranteedCharacters.length; i++) {
     result[i] = guaranteedCharacters[i]
   }
-
+  console.log(result)
   return result.join("");
 
 }
-
-// Write password to the #password input
+//connects the js to the html through the generateBtn 
+var generateBtn = document.getElementById("generateBtn")
+// Write password to the #password input the even.prevent default was added cause i originally created a form in the html.. button and form do not mix took several hours to find this out 
 function writePassword(event) {
+ event.preventDefault()
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
